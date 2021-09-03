@@ -32,7 +32,9 @@ app.get('/api/whoami', (req, res) => {
     req.socket.remoteAddress ||
     req.connection.socket.remoteAddress
   ).split(',')[0];
-  res.json({ ip: ipAddress });
+
+  var language = req.headers['accept-language'];
+  res.json({ ip: ipAddress, language: language });
 });
 
 // listen for requests :)
