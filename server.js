@@ -26,13 +26,13 @@ app.get('/api/hello', function (req, res) {
 });
 
 app.get('/api/whoami', (req, res) => {
-  var ipaddress = (
+  var ipAddress = (
     req.headers['x-forwarded-for'] ||
     req.connection.remoteAddress ||
     req.socket.remoteAddress ||
     req.connection.socket.remoteAddress
   ).split(',')[0];
-  res.send(ipaddress);
+  res.json({ ip: ipAddress });
 });
 
 // listen for requests :)
